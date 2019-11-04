@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-body">
+        <input 
+            [(ngModel)]="task.name" 
+            name="name"
+            class="form-control">
+    
+        <hr>
+        <p class="lead"> <small>Subtasks</small> </p>
+
+        <div class="list-group list-group-flush mb-2">
+            <app-task-view class="list-group-item p-1" *ngFor="let subtask of task.subTasks" 
+                [task]="subtask" [size]="'size-1'"
+                (deleteTask)="deleteSub($event)"></app-task-view>
+        </div>
+       
+        <app-task-add class="mt-2" (editTask)="handleAddSubtask($event)" [placeholder]="'Add a subtask and enter...'"  [name]="subtask"></app-task-add>
+    
+    
+        <button class="btn btn-info text-right btn-sm mt-3" (click)="saveChanges()">Close and Save</button>
+    </div>
+</div>
+
+

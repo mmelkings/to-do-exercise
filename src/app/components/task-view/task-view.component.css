@@ -1,0 +1,11 @@
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.task-done{
+    text-decoration: line-through;
+}
+
+.size-1{
+    font-size: 1rem;
+}

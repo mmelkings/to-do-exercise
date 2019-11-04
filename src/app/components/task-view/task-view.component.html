@@ -1,0 +1,27 @@
+<div class="d-flex text-left  align-items-center">
+    <div class="col-1 align-self-end" [ngSwitch]="task.status">
+        <i *ngSwitchCase="1" class="text-secondary material-icons-outlined cursor-pointer" (click)="taskChangeStatus(2)">check_box_outline_blank</i> 
+        <i *ngSwitchCase="2" class="text-muted material-icons-outlined" (click)="taskChangeStatus(1)" >check_box</i> 
+    </div>
+    <div class="col cursor-pointer" (click)="openDetails()">
+        <p [class]=" 'lead m-0 '+ size " 
+        [ngClass]="{
+            'task-done': task.status === 2,
+            'text-muted': task.status === 2
+        }"
+        >
+            {{task.name}}
+            <small>
+                <span *ngIf="task.subTasks.length > 0" class="badge badge-info">
+                    {{task.subTasks.length }} subtask(s)       
+                </span>
+            </small>
+           
+        </p>
+    </div>
+
+    <div class="col d-flex   align-items-center justify-content-end">
+        <button class="btn btn-sm mx-1 btn-outline-danger" (click)="taskDelete()">
+            <i class="material-icons-outlined">delete</i></button>
+    </div>
+</div>

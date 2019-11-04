@@ -1,0 +1,10 @@
+<form>
+    <input type="text" 
+        class="form-control"
+        [(ngModel)]="task" 
+        (keyup.enter)="handleEdit()"
+        name="task"
+        #input
+        [placeholder]="placeholder"
+        autocomplete="off">
+</form>

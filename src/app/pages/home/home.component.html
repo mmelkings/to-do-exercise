@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center text-uppercase ">To-do list </h1>
+        </div>
+    </div> 
+    <div class="row">
+        <div class="col">
+            <app-task-add (editTask)="handleNewTask($event)" ></app-task-add>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mt-3">
+       
+            <div *ngIf="tasks.length === 0" class="alert alert-warning  d-flex  align-items-center" role="alert">
+                <i class="material-icons-outlined">info</i> 
+                Your To-Do List is empty.
+            </div>
+
+
+            <div class="list-group list-group-flush ">
+                <app-task-view class="list-group-item " *ngFor="let task of (tasks | status: 1)" 
+                    [task]="task" 
+                    (openTaskDetails)="handleOpenTaskDetails($event)"
+                    (deleteTask)="handleDeleteTask($event)"></app-task-view>
+
+                <app-task-view 
+                    class="list-group-item"
+                    *ngFor="let task of (tasks | status: 2)" 
+                    [task]="task" 
+                    (openTaskDetails)="handleOpenTaskDetails($event)"
+                    (deleteTask)="handleDeleteTask($event)"></app-task-view>
+            </div>
+            
+        </div>
+
+        <app-task-details class="col-5 mt-3" *ngIf="edit" [task]="taskEdit" (saveEvent)="handleCloseDetails($event)"  ></app-task-details>
+    </div>
+</div>
